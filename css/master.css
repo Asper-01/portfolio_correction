@@ -16,10 +16,10 @@
     /*Inclus le padding et la bordure dans la taille des boîtes*/
     /* Provisoire */
     /* border: 1px dashed var(--white); */
-    background-color: rgba(0,0,0,0.1);
+    /* background-color: rgba(0,0,0,0.1); */
 }
 
-img {
+img, video {
     /*FIXME Attention à la taille du logo*/
     width: 100%;
 }
@@ -31,7 +31,7 @@ body {
     font-size: large;
 }
 
-header,footer {
+.main-header,.main-footer {
     min-height: var(--header-height);
     background-color: var(--dark);
     color: var(--white);
@@ -39,6 +39,9 @@ header,footer {
 
 aside {
     flex: 1 1 300px;
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 main {
@@ -104,16 +107,32 @@ blockquote i {
     align-items: center;
 }
 
+.reverse {
+    flex-direction: row-reverse;
+}
+
 /*ANCHOR FLEX Items*/
+/*ANCHOR Sizing*/
 
 .f-s {
     flex: 1 1 120px;
+}
+.f-m {
+    flex: 1 1 300px;
+}
+.f-l {
+    flex: 1 1 400px;
 }
 
 /*ANCHOR Spacing*/
 
 .p-1 {
     padding: 1rem;
+}
+
+.my-4 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 /* ANCHOR TYPO */
@@ -123,6 +142,13 @@ blockquote i {
 }
 
 /*ANCHOR COMPONENTS*/
+
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;/*Passe en avant plan*/
+}
 
 .main-header__logo-img {
     display: block;
@@ -173,7 +199,17 @@ blockquote i {
 .card {
     margin-top: 16px;
     box-shadow: 0 0 16px rgba(0,0,0,0.2);
+    position: sticky;
+    top: calc( var(--header-height) + 3rem );
+    background-color: var(--white);
 }
+
+.card__img {
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(50%);
+}
+
 
 .red-square {
     background-color: var(--primary);
@@ -183,5 +219,13 @@ blockquote i {
     bottom: 16px;
     left: -16px;
     mix-blend-mode: multiply;
-    opacity: 0.5;
+    opacity: 0.8;
+}
+
+.main-container {
+    margin-top: var(--header-height);
+}
+
+.shadow {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
